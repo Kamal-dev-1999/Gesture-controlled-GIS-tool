@@ -107,5 +107,13 @@ npm run dev
 ---
 
 ## ✋ Gesture Controls
-- **Air Panning**: Hold hand open. Moving hand X/Y translates to map panning through a tuned dead-zone low-pass filter calculation.
-- **Pinch-to-Zoom**: Bring thumb (Landmark 4) and Index finger (Landmark 8) together. While pinched, moving hand vertically up zooms IN; moving down zooms OUT. Interpolated smoothly using a custom alpha-lerp loop.
+
+### 1. Air Panning (Moving the Map)
+- **How to do it:** Keep your hand **flat and open** facing the camera (fingers unpinched).
+- **The Interaction:** Move your hand horizontally or vertically in the air. The system calculates the centroid of your hand and translates it to map panning through a tuned dead-zone low-pass filter to ignore hand jitter.
+
+### 2. Pinch-to-Zoom (Telescoping the Map)
+- **How to do it:** Bring the very tip of your **Thumb** and the very tip of your **Index Finger** together to perform a "Pinch". A purple dashed line will connect the two fingers on the camera feed screen.
+- **To Zoom OUT (globe view):** While holding the pinch, pull your hand straight **DOWN**.
+- **To Zoom IN (street view):** While holding the pinch, push your hand straight **UP**.
+- **Note:** Releasing the pinch immediately locks in the zoom level and returns you to Air Panning mode.

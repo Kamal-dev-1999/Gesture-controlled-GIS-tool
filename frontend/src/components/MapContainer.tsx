@@ -14,26 +14,13 @@ const MAP_OPTIONS: google.maps.MapOptions = {
   streetViewControl: false,
   fullscreenControl: false,
   gestureHandling: 'none', // We own all gesture handling
-  clickableIcons: false,
-  styles: [
-    { elementType: 'geometry',        stylers: [{ color: '#0d1117' }] },
-    { elementType: 'labels.text.stroke', stylers: [{ color: '#080c18' }] },
-    { elementType: 'labels.text.fill',   stylers: [{ color: '#6b7280' }] },
-    { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#94a3b8' }] },
-    { featureType: 'poi',                     elementType: 'labels.text.fill', stylers: [{ color: '#6b7280' }] },
-    { featureType: 'poi.park',                elementType: 'geometry',         stylers: [{ color: '#0f1f12' }] },
-    { featureType: 'poi.park',                elementType: 'labels.text.fill', stylers: [{ color: '#3d7a52' }] },
-    { featureType: 'road',                    elementType: 'geometry',         stylers: [{ color: '#1e2535' }] },
-    { featureType: 'road',                    elementType: 'geometry.stroke',  stylers: [{ color: '#111827' }] },
-    { featureType: 'road.highway',            elementType: 'geometry',         stylers: [{ color: '#1d3461' }] },
-    { featureType: 'road.highway',            elementType: 'geometry.stroke',  stylers: [{ color: '#111827' }] },
-    { featureType: 'road.highway',            elementType: 'labels.text.fill', stylers: [{ color: '#3b82f6' }] },
-    { featureType: 'transit',                 elementType: 'geometry',         stylers: [{ color: '#111827' }] },
-    { featureType: 'transit.station',         elementType: 'labels.text.fill', stylers: [{ color: '#6b7280' }] },
-    { featureType: 'water',                   elementType: 'geometry',         stylers: [{ color: '#0a1628' }] },
-    { featureType: 'water',                   elementType: 'labels.text.fill', stylers: [{ color: '#1e3a5f' }] },
-    { featureType: 'water',                   elementType: 'labels.text.stroke', stylers: [{ color: '#050810' }] },
-  ],
+  clickableIcons: true,
+  mapTypeId: 'roadmap',
+  colorScheme: 'LIGHT' as any,
+  restriction: {
+    latLngBounds: { north: 85, south: -85, west: -180, east: 180 },
+    strictBounds: true,
+  },
 };
 
 // ─── Public handle exposed via forwardRef ─────────────────────────────────────

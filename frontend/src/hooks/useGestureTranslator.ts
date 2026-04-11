@@ -18,8 +18,8 @@ const PAN_DEAD_ZONE = 0.006;
  *  Higher = more sensitive panning. Lowered for more control. */
 const PAN_SENSITIVITY = 3.5;
 
-/** How strong the zoom response is. Increased for better range. */
-const ZOOM_SENSITIVITY = 50;
+/** How strong the zoom response is. Lowered slightly to fix over-sensitivity. */
+const ZOOM_SENSITIVITY = 65;
 
 /** Lerp alpha for zoom smoothing. */
 const ZOOM_LERP_ALPHA = 0.15;
@@ -27,8 +27,8 @@ const ZOOM_LERP_ALPHA = 0.15;
 /** Smoothing window for the centroid (higher = smoother but more latency) */
 const SMOOTHING_WINDOW = 12;
 
-/** While pinching, Y dead zone before zoom kicks in */
-const ZOOM_DEAD_ZONE_Y = 0.004;
+/** While pinching, Y dead zone before zoom kicks in (drastically lowered so slow zooms work natively) */
+const ZOOM_DEAD_ZONE_Y = 0.0005;
 
 // ─── Hook State (persistent across renders via refs) ────────────────────────
 

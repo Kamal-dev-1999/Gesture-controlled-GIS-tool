@@ -134,6 +134,12 @@ export default function App() {
           onBoundsChange={handleBoundsChange}
         />
 
+        {/* Center Focus Reticle */}
+        <div className="map-center-reticle">
+          <div className="reticle-dot" />
+          <div className="reticle-ring" />
+        </div>
+
         {/* HUD pill */}
         <div className="map-hud">
           <div className="hud-pill">
