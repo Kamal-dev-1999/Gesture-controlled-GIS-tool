@@ -1,7 +1,7 @@
-@import "tailwindcss";
-
 /* ─── Google Fonts ──────────────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
 
 /* ─── CSS Custom Properties ─────────────────────────────────────────────────── */
 :root {
@@ -256,11 +256,9 @@ html, body, #root {
   font-size: 12px;
   color: var(--text-secondary);
   line-height: 1.6;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  max-height: 120px;
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 .wiki-article-distance {

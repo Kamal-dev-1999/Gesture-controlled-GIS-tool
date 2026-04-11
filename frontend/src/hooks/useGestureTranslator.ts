@@ -12,23 +12,23 @@ import {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 /** Minimum normalized delta to register as meaningful movement */
-const PAN_DEAD_ZONE = 0.004;
+const PAN_DEAD_ZONE = 0.006;
 
 /** Scale factor: normalized delta → map pixel offset.
- *  Higher = more sensitive panning. */
-const PAN_SENSITIVITY = 8;
+ *  Higher = more sensitive panning. Lowered for more control. */
+const PAN_SENSITIVITY = 3.5;
 
-/** How strong the zoom response is (higher = faster zoom per cm of hand movement) */
-const ZOOM_SENSITIVITY = 30;
+/** How strong the zoom response is. Increased for better range. */
+const ZOOM_SENSITIVITY = 50;
 
-/** Lerp alpha for zoom smoothing — lower = buttery smooth, higher = responsive */
-const ZOOM_LERP_ALPHA = 0.12;
+/** Lerp alpha for zoom smoothing. */
+const ZOOM_LERP_ALPHA = 0.15;
 
 /** Smoothing window for the centroid (higher = smoother but more latency) */
-const SMOOTHING_WINDOW = 6;
+const SMOOTHING_WINDOW = 12;
 
 /** While pinching, Y dead zone before zoom kicks in */
-const ZOOM_DEAD_ZONE_Y = 0.003;
+const ZOOM_DEAD_ZONE_Y = 0.004;
 
 // ─── Hook State (persistent across renders via refs) ────────────────────────
 
@@ -86,7 +86,7 @@ export function useGestureTranslator(
     }
 
     zs.currentZoom = lerp(zs.currentZoom, zs.targetZoom, ZOOM_LERP_ALPHA);
-    const clamped = Math.max(2, Math.min(20, zs.currentZoom));
+    const clamped = Math.max(1, Math.min(22, zs.currentZoom));
     map.setZoom(clamped);
 
     // Keep looping until zoom converges
@@ -94,7 +94,7 @@ export function useGestureTranslator(
       zoomRafRef.current = requestAnimationFrame(runZoomLerp);
     } else {
       zs.currentZoom = zs.targetZoom;
-      map.setZoom(Math.max(2, Math.min(20, zs.targetZoom)));
+      map.setZoom(Math.max(1, Math.min(22, zs.targetZoom)));
       zoomRafRef.current = null;
     }
   }, [mapRef]);
@@ -145,8 +145,8 @@ export function useGestureTranslator(
       if (yDeadApplied !== 0) {
         const zoomDelta = yDeltaToZoomDelta(yDeadApplied, ZOOM_SENSITIVITY);
         zoomState.current.targetZoom = Math.max(
-          2,
-          Math.min(20, zoomState.current.targetZoom + zoomDelta)
+          1,
+          Math.min(22, zoomState.current.targetZoom + zoomDelta)
         );
 
         // Kick off lerp loop if not already running
