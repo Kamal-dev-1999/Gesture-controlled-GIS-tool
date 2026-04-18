@@ -1,5 +1,5 @@
 # 🌍 Minority Report GIS Engine
-<!--  -->
+
 A high-performance, gesture-controlled Geographic Information System (GIS) prototype. This mono-repo architecture couples real-time machine vision (MediaPipe) with geographic mapping (Google Maps API) and spatio-temporal intelligence (Wikipedia + Google Places).
 
 ## 🤖 AI Agent Onboarding & Context
